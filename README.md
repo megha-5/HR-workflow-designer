@@ -2,46 +2,66 @@
 
 This is a small prototype of a **workflow builder** where an HR admin can visually create processes like onboarding, approvals, and automated steps.
 
-I built this as part of a frontend case study, with a focus on **how the system is structured and behaves**, rather than making the UI look perfect.
+I built this as part of a frontend case study, focusing more on **how the system is structured and works**, rather than making the UI look perfect.
 
 ---
 
 ## 🚀 What it does
 
-* Lets you create a workflow using a drag-and-drop canvas
-* Supports different types of nodes:
+* Drag-and-drop workflow canvas
+* Supports multiple node types:
 
   * Start
   * Task
   * Approval
   * Automated Step
   * End
-* You can connect nodes to define a flow
-* Clicking a node opens a form to configure it
-* There’s a sandbox panel to simulate how the workflow runs
+* Connect nodes to define flow
+* Click a node to configure it
+* Run the workflow in a sandbox to see execution
+
+---
+
+## 📸 Screenshots
+
+### Workflow Creation & Canvas
+
+![Workflow Creation](./assets/workflow.png)
+
+### Node Configuration
+
+The right panel allows editing node-specific fields like title, assignee, and actions.
+
+### Workflow Simulation
+
+You can run the workflow and see step-by-step execution logs.
+
+### Validation Example
+
+Basic validation ensures things like presence of a Start node before execution.
 
 ---
 
 ## 🧠 How I approached it
 
-Since this was a **time-boxed assignment (4–6 hours)**, I focused on:
+This was a **time-boxed (4–6 hours)** assignment, so I focused on:
 
-* Keeping the code clean and easy to extend
-* Separating UI, logic, and data clearly
-* Making sure the core features actually work end-to-end
+* Keeping the architecture clean
+* Separating UI, logic, and API layers
+* Making sure core functionality works end-to-end
 
-I avoided spending too much time on styling and instead prioritized structure and functionality.
+I intentionally avoided spending too much time on styling.
 
 ---
 
 ## 🏗️ Project structure
 
-```id="wpp4bx"
+```
 src/
  ├── components/   → Canvas, Sidebar, Forms, Sandbox
- ├── nodes/        → Custom node UIs for React Flow
+ ├── nodes/        → Custom React Flow nodes
  ├── store/        → Global state (Zustand)
- ├── api/          → Mock API functions
+ ├── api/          → Mock API layer
  ├── hooks/        → Workflow validation logic
 ```
 
@@ -49,45 +69,39 @@ src/
 
 ## ⚙️ Key decisions
 
-**State management (Zustand)**
-I used Zustand because it’s simple and works well for managing shared state like nodes, edges, and selected node.
+**Zustand for state**
+Used for simplicity and clean state handling (nodes, edges, selection).
 
 **Custom node types**
-Instead of using default nodes, I created separate components for each type. This makes it easier to extend later.
+Each node has its own component → easier to extend.
 
 **Dynamic forms**
-Each node type has its own form (Task, Approval, etc.), instead of using one generic form.
+Different forms based on node type instead of one generic form.
 
-**Mock API layer**
-I kept API calls separate so it can easily be replaced with a real backend later.
+**Mock API separation**
+API logic is isolated so it can be replaced with a real backend later.
 
 ---
 
 ## 🧪 Workflow simulation
 
-There’s a simple “Run” button that:
-
-* Validates the workflow (e.g., checks if Start node exists)
-* Sends data to a mock API
-* Shows step-by-step execution logs
-
-This helped me demonstrate how the workflow actually behaves.
+* Validates workflow (e.g., Start node exists)
+* Sends data to mock API
+* Displays step-by-step execution logs
 
 ---
 
 ## ⚖️ Trade-offs
 
-* I didn’t focus on UI design or styling
-* Validation is basic (no cycle detection yet)
-* No backend or persistence (everything is in-memory)
-
-Given more time, I would definitely improve these.
+* UI is basic (focused on functionality)
+* Validation is minimal (no cycle detection yet)
+* No backend persistence
 
 ---
 
 ## ▶️ How to run
 
-```bash id="0jfqna"
+```bash
 npm install
 npm run dev
 ```
@@ -96,17 +110,17 @@ npm run dev
 
 ## 📌 What I would improve next
 
-* Add better validation (like cycle detection)
-* Highlight errors directly on nodes
-* Export/import workflows as JSON
-* Add undo/redo support
-* Improve UI using Tailwind or a design system
+* Better validation (cycle detection, disconnected nodes)
+* Highlight errors visually on nodes
+* Export/import workflow as JSON
+* Undo/redo support
+* Improved UI (Tailwind / design system)
 
 ---
 
 ## 🙌 Final note
 
-This project is mainly about showing how I think when building frontend systems —
-how I structure code, manage state, and handle dynamic UI — especially under time constraints.
+This project reflects how I approach building frontend systems —
+focusing on **clean structure, scalability, and working functionality**, especially under time constraints.
 
 ---
