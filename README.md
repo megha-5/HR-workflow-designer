@@ -26,7 +26,7 @@ I built this as part of a frontend case study, focusing more on **how the system
 
 ### Workflow Creation & Canvas
 
-![Workflow Creation](./assets/workflow.png)
+![Workflow Creation](assets/workflow.png)
 
 ### Node Configuration
 
